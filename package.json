@@ -1,0 +1,36 @@
+{
+  "name": "node_ejs_login",
+  "version": "1.0.0",
+  "description": "node ejs login page",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/merttsvnc/node_ejs_login.git"
+  },
+  "keywords": [
+    "nodejs",
+    "ejs",
+    "login"
+  ],
+  "author": "sevinc mert",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/merttsvnc/node_ejs_login/issues"
+  },
+  "homepage": "https://github.com/merttsvnc/node_ejs_login#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.3",
+    "mongoose": "^7.5.3",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0"
+  }
+}
