@@ -1,27 +1,24 @@
-const express = require("express")
-const app = express()
+const express = require('express');
+const app = express();
 const expressLayouts = require("express-ejs-layouts")
 
-// Routes
+// EJS
+app.use(expressLayouts);
+app.set('view engine', 'ejs');
+
+// Routers
 app.use("/", require("./routes/index"))
 app.use("/users", require("./routes/users"))
 
-// EJS
-app.use(expressLayouts)
-app.set("view engine", "ejs")
-
-// Set up port and start listening
 const port = process.env.PORT || 3000;
 
 const start = async () => {
   try {
-    // await connectDB(process.env.MONGO_URI);
-    await app.listen(port, () => {
-      console.log(`Server is listening on port ${port}`);
-    });
+    // await connectDB(process.env.MONGO_URI)
+    app.listen(port, console.log(`Server is listening on port ${port}...`))
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
-start();
+start()
