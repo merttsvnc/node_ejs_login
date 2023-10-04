@@ -4,7 +4,11 @@ const app = express();
 const expressLayouts = require("express-ejs-layouts")
 const connectDB = require("./config/db")
 const flash = require("connect-flash")
-const session = require("express-session")
+const session = require("express-session");
+const passport = require("passport")
+
+// Passport config
+require("./config/passport")(passport)
 
 // EJS
 app.use(expressLayouts);
@@ -19,6 +23,10 @@ app.use(session({
   resave: true,
   saveUninitialized: true
 }))
+
+// Passport middleware
+app.use(passport.initialize())
+app.use(passport.session())
 
 // Connect flash
 app.use(flash())
