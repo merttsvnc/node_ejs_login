@@ -3,6 +3,8 @@ const express = require('express');
 const app = express();
 const expressLayouts = require("express-ejs-layouts")
 const connectDB = require("./config/db")
+const flash = require("connect-flash")
+const session = require("express-session")
 
 // EJS
 app.use(expressLayouts);
@@ -10,6 +12,23 @@ app.set('view engine', 'ejs');
 
 // bodyParser
 app.use(express.urlencoded({ extended: false }))
+
+// Express session
+app.use(session({
+  secret: "secret",
+  resave: true,
+  saveUninitialized: true
+}))
+
+// Connect flash
+app.use(flash())
+
+// Global variables
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash("success_msg")
+  res.locals.error_msg = req.flash("error_msg")
+  next()
+})
 
 // Routers
 app.use("/", require("./routes/index"))
